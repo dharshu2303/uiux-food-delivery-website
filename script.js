@@ -1,7 +1,5 @@
 let cart = [];
 let orders = [];
-
-// DOM elements
 const homeLink = document.getElementById('home-link');
 const menuLink = document.getElementById('menu-link');
 const cartLink = document.getElementById('cart-link');
@@ -13,7 +11,6 @@ const searchBox = document.getElementById('search-box');
 const categoryFilter = document.getElementById('category-filter');
 const priceFilter = document.getElementById('price-filter');
 
-// Event listeners for navigation
 homeLink.addEventListener('click', (e) => {
     e.preventDefault();
     showPage('home-page');
@@ -38,13 +35,11 @@ ordersLink.addEventListener('click', (e) => {
 
 menuBtn.addEventListener('click', () => showPage('menu-page'));
 
-// Show more items
 showMoreBtn.addEventListener('click', function() {
     document.getElementById('more-items').style.display = 'grid';
     this.style.display = 'none';
 });
 
-// Search and filter functionality
 searchBox.addEventListener('input', filterItems);
 categoryFilter.addEventListener('change', filterItems);
 priceFilter.addEventListener('change', filterItems);
@@ -58,14 +53,9 @@ function filterItems() {
         const name = item.getAttribute('data-name').toLowerCase();
         const category = item.getAttribute('data-category');
         const price = parseInt(item.getAttribute('data-price'));
-        
-        // Check search term
         const matchesSearch = name.includes(searchTerm);
-        
-        // Check category
         const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
-        
-        // Check price range
+   
         let matchesPrice = true;
         if (selectedPrice !== 'all') {
             const [min, max] = selectedPrice.split('-').map(Number);
@@ -75,8 +65,7 @@ function filterItems() {
                 matchesPrice = price >= min && (max ? price <= max : true);
             }
         }
-        
-        // Show/hide based on all filters
+  
         if (matchesSearch && matchesCategory && matchesPrice) {
             item.style.display = 'block';
         } else {
@@ -85,7 +74,6 @@ function filterItems() {
     });
 }
 
-// Add to cart functionality
 document.querySelectorAll('.add-to-cart').forEach(button => {
     button.addEventListener('click', function() {
         const foodItem = this.closest('.food-item');
@@ -109,8 +97,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
         }
         
         updateCart();
-        
-        // Notification
         const notification = document.createElement('div');
         notification.textContent = `+1 ${itemName}`;
         notification.style.position = 'fixed';
@@ -130,7 +116,6 @@ document.querySelectorAll('.add-to-cart').forEach(button => {
     });
 });
 
-// Update cart display
 function updateCart() {
     const cartItemsContainer = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
@@ -169,8 +154,6 @@ function updateCart() {
     
     cartItemsContainer.innerHTML = itemsHTML;
     cartTotal.textContent = total;
-    
-    // Add event listeners to remove buttons
     document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', function() {
             const cartItem = this.closest('.cart-item');
@@ -181,24 +164,22 @@ function updateCart() {
     });
 }
 
-// Checkout functionality
 checkoutBtn.addEventListener('click', function() {
     if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
     }
-    
-    // Create order
+
     const order = {
         id: Date.now(),
         date: new Date().toLocaleString(),
         items: [...cart],
         total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-        status: 'pending' // could be 'pending', 'delivered', 'cancelled'
+        status: 'pending' 
     };
     
-    orders.unshift(order); // Add to beginning of array
-    cart = []; // Clear cart
+    orders.unshift(order); 
+    cart = []; 
     updateCart();
     updateOrders();
     
@@ -206,7 +187,6 @@ checkoutBtn.addEventListener('click', function() {
     showPage('orders-page');
 });
 
-// Update orders display
 function updateOrders() {
     const ordersList = document.getElementById('orders-list');
     
@@ -232,8 +212,7 @@ function updateOrders() {
                 </div>
             `;
         });
-        
-        // Determine status class and text
+
         let statusClass = '';
         let statusText = '';
         switch(order.status) {
@@ -268,7 +247,6 @@ function updateOrders() {
     ordersList.innerHTML = ordersHTML;
 }
 
-// Show page function
 function showPage(pageId) {
     document.getElementById('home-page').style.display = 'none';
     document.getElementById('menu-page').style.display = 'none';
@@ -278,5 +256,4 @@ function showPage(pageId) {
     window.scrollTo(0, 0);
 }
 
-// Initialize
 showPage('home-page');
