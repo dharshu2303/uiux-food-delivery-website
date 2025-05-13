@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-image"></div>
+   
+    <nav class="nav-bar">
+        <a href="#" class="nav-link" id="home-link">Home</a>
+        <a href="#" class="nav-link" id="menu-link">Menu</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="#" class="nav-link" id="orders-link">Orders</a>
+        <a href="#" class="nav-link cart-icon" id="cart-link">
+            Cart <span class="cart-count">0</span>
+        </a>
+    </nav>
+
+    <div class="container">
+        <div class="home-page" id="home-page">
+            <div class="logo">WELCOME TO OUR WEBSITE...</div>
+            <img src="images/res_logo.png" width="400px" height="400px" alt="Restaurant Logo"><br><br>
+            <div class="slogan">WHERE YOUR TASTE BUDS EXPECTATIONS ARE FULFILLED</div>
+            <button class="menu-btn">BROWSE MENU</button>
+        </div>
+    
+        <div class="menu-page" id="menu-page">
+            <div class="search-filter-container">
+                <input type="text" class="search-box" id="search-box" placeholder="Search for dishes...">
+                <div class="filter-container">
+                    <select class="filter-dropdown" id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="starters">Starters</option>
+                        <option value="main">Main Course</option>
+                        <option value="desserts">Desserts & Drinks</option>
+                    </select>
+                    <select class="filter-dropdown" id="price-filter">
+                        <option value="all">All Prices</option>
+                        <option value="0-150">Under ₹150</option>
+                        <option value="150-250">₹150 - ₹250</option>
+                        <option value="250">Above ₹250</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="food-category">STARTERS</div>
+            
+            <div class="food-grid" id="starters-grid">
+                <div class="food-item" data-id="14" data-name="Chicken 65" data-price="180" data-category="starters">
+                    <img src="images/chi.png" alt="Chicken 65">
+                    <div class="food-name">Chicken 65</div>
+                    <div class="food-price">₹180</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="13" data-name="Paneer Ghee Roast" data-price="160" data-category="starters">
+                    <img src="images/pgr.png" alt="Paneer Ghee Roast">
+                    <div class="food-name">Paneer Ghee Roast</div>
+                    <div class="food-price">₹160</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="12" data-name="Crispy Prawn Fry" data-price="200" data-category="starters">
+                    <img src="images/prawn.png" alt="Crispy Prawn Fry">
+                    <div class="food-name">Crispy Prawn Fry</div>
+                    <div class="food-price">₹200</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="11" data-name="Mushroom Pepper Fry" data-price="150" data-category="starters">
+                    <img src="images/mush.png" alt="Mushroom Pepper Fry">
+                    <div class="food-name">Mushroom Pepper Fry</div>
+                    <div class="food-price">₹150</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="food-category">MAIN COURSE</div>
+            
+            <div class="food-grid" id="main-grid">
+                <div class="food-item" data-id="10" data-name="Chicken Chettinad" data-price="280" data-category="main">
+                    <img src="images/cc.png" alt="Chicken Chettinad">
+                    <div class="food-name">Chicken Chettinad</div>
+                    <div class="food-price">₹280</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="1" data-name="Mutton Chukka" data-price="300" data-category="main">
+                    <img src="images/mc.png" alt="Mutton Chukka">
+                    <div class="food-name">Mutton Chukka</div>
+                    <div class="food-price">₹300</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="9" data-name="Pasta Arrabbiata" data-price="220" data-category="main">
+                    <img src="images/pasta.png" alt="Pasta Arrabbiata">
+                    <div class="food-name">Pasta Arrabbiata</div>
+                    <div class="food-price">₹220</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="8" data-name="Chilli Paratha" data-price="200" data-category="main">
+                    <img src="images/chilli.png" alt="Chilli Paratha">
+                    <div class="food-name">Chilli Paratha</div>
+                    <div class="food-price">₹200</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="show-more">
+                <button class="show-more-btn">SHOW MORE</button>
+            </div>
+            <div class="food-grid" id="more-items" style="display: none;">
+                <div class="food-item" data-id="7" data-name="Prawn Biryani" data-price="260" data-category="main">
+                    <img src="images/pb.png" alt="Prawn Biryani">
+                    <div class="food-name">Prawn Biryani</div>
+                    <div class="food-price">₹260</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="6" data-name="Paneer Butter Masala" data-price="240" data-category="main">
+                    <img src="images/pbm.png" alt="Paneer Butter Masala">
+                    <div class="food-name">Paneer Butter Masala</div>
+                    <div class="food-price">₹240</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="5" data-name="Hyderabad Dum Biryani" data-price="270" data-category="main">
+                    <img src="images/dumbri.png" alt="Hyderabad Dum Biryani">
+                    <div class="food-name">Hyderabad Dum Biryani</div>
+                    <div class="food-price">₹270</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="4" data-name="Egg Fried Rice" data-price="210" data-category="main">
+                    <img src="images/efr.png" alt="Egg Fried Rice">
+                    <div class="food-name">Egg Fried Rice</div>
+                    <div class="food-price">₹210</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="food-category">DESSERTS & DRINKS</div>
+            
+            <div class="food-grid" id="desserts-grid">
+                <div class="food-item" data-id="3" data-name="Filter Coffee" data-price="80" data-category="desserts">
+                    <img src="images/fc.png" alt="Filter Coffee">
+                    <div class="food-name">Filter Coffee</div>
+                    <div class="food-price">₹80</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="2" data-name="Badam Halwa" data-price="120" data-category="desserts">
+                    <img src="images/bh.png" alt="Badam Halwa">
+                    <div class="food-name">Badam Halwa</div>
+                    <div class="food-price">₹120</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                <div class="food-item" data-id="1" data-name="Ilanir Payasam" data-price="150" data-category="desserts">
+                    <img src="images/ep.png" alt="Ilanir Payasam">
+                    <div class="food-name">Ilanir Payasam</div>
+                    <div class="food-price">₹150</div>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-page" id="cart-page">
+            <div class="floating-food" style="top: 20%; left: 10%; background-image: url('images/dumbri.png'); animation-delay: 0s;"></div>
+            <div class="floating-food" style="top: 70%; left: 80%; background-image: url('images/chi.png'); animation-delay: 3s;"></div>
+            <div class="floating-food" style="top: 40%; left: 60%; background-image: url('images/fc.png'); animation-delay: 6s;"></div>
+            <div class="floating-food" style="top: 60%; left: 20%; background-image: url('images/chilli.png'); animation-delay: 9s;"></div>
+            
+            <div class="cart-header">YOUR CART FOOD</div>
+            <div id="cart-items">
+                <p style="text-align: center;">Your cart is empty</p>
+            </div>
+            <div class="cart-total">TOTAL: ₹<span id="cart-total">0</span></div>
+            <button class="checkout-btn">PROCEED TO BUY</button>
+        </div>
+        
+        <div class="orders-page" id="orders-page">
+            <div class="orders-header">YOUR ORDER HISTORY</div>
+            <div id="orders-list">
+                <div class="no-orders">You haven't placed any orders yet</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
